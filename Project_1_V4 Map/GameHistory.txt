@@ -1,0 +1,19 @@
+Game 1:
+Your score     = 26
+Dealer's score = 0
+Result         = Loss
+
+Game 2:
+Your score     = 23
+Dealer's score = 0
+Result         = Loss
+
+Game 3:
+Your score     = 19
+Dealer's score = 20
+Result         = Lose
+
+Game 4:
+Your score     = 17
+Dealer's score = 24
+Result         = Win
