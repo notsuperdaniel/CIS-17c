@@ -1,0 +1,9 @@
+Game 1:
+Your score     = 18
+Dealer's score = 17
+Result         = Win
+
+Game 2:
+Your score     = 22
+Dealer's score = 0
+Result         = Loss
