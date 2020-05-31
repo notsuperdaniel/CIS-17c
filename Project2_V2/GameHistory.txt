@@ -1,0 +1,4 @@
+Game 1:
+Your score     = 21
+Dealer's score = 24
+Result         = Win
