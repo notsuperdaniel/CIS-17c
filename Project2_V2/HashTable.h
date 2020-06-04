@@ -21,13 +21,16 @@ class HashTable{
         unsigned int hash;
         Node *ary;
         int size;
+        int hshSz;
         string nam;
         string *dat;
         float* bets;
+        float betC;
     public:
-        void setDat(string* str,int s){dat=str;size=s;}
+        void setDat(string* str,int s,float* b){dat=str;size=s;bets=b;}
         void create(int);
         ~HashTable();
         void ELFHash(string);
         void insert();
+        void srch(string);
 };

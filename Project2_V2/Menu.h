@@ -84,6 +84,7 @@ class Menu{
         void createArys();
         void shellSrt(float [], int);
         ~Menu();
+        void hashSrch();
         
         
         

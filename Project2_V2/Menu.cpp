@@ -81,9 +81,6 @@
 //==============================================================================
 void Menu::menu(){
     createArys();
-    HashTable table;
-    table.setDat(nam,size);
-    table.create(200);
     float mon;
     //askName();
     do{   
@@ -144,6 +141,7 @@ void Menu::menu(){
 //Display the Rules
 //==============================================================================
  void Menu::rules(){
+     
      cout<<"The objective of Blackjack is to get the sum of your cards as close \n"
              "to equalling 21 without going over. To beat the dealer, your sum\n"
              "has to be greater than theirs, while not exceeding 21. If the \n"
@@ -279,16 +277,22 @@ void Menu::menu(){
          names.pop();
      //    array[i]=i;
      }
+     
  }
 //==============================================================================
 //Leader Board
 //==============================================================================
  void Menu::leadBrd(){
+    // cout<<"Nam[0]"<<nam[0]<<endl;
+     hashSrch();
+     
      cout<<"==================================================================\n";
      cout<<"Ranking from most money won on a single bet, to most money lost:"<<endl;
      cout<<"==================================================================\n";
      cout<<"Personal Leaderboard:\n";
      int j=0;
+     //cout<<nam[0]<<endl;
+     cout<<"Size = "<<size<<endl;;
      for(int i=0;i<size;i++){
          if (name==nam[i]){
              scor2[j]=scor[i];
@@ -297,8 +301,9 @@ void Menu::menu(){
      }
      shellSrt(scor2,j);
      int a=1;
+   
      for(int i=j-1;i>=0;i--){
-         cout<<a+1<<": $"<<scor2[i]<<endl;
+         cout<<a<<": $"<<scor2[i]<<endl;
          a++;
      }
      
@@ -385,4 +390,16 @@ void Menu::menu(){
       delete[]nam;
       delete[]scor;
       delete[]scor2;
+  }
+  
+  void Menu::hashSrch(){
+      
+      table.setDat(nam,size,scor);
+      table.create(200);
+      string temp;
+      cout<<"To Search for stats by name:"<<endl;
+      cout<<"Enter a name:";
+      cin>>temp;
+      table.ELFHash(temp);
+      table.srch(temp);
   }

@@ -5,25 +5,7 @@
  */
 #include "HashTable.h"
 
-void HashTable::insert(){
-    //for(int i=0;i<size;i++){
-        cout<<"1: "<<ary[hash].hash2<<endl;
-        if (ary[hash].hash2==-1){
-            ary[hash].hash2=hash;
-            ary[hash].name=nam;
-            //COME BACK SET BET
-        }
-        else{
-            Node *newNde=new Node;
-            newNde->hash2=hash;
-            newNde->name=nam;
-            //COME BACK SET BET
-            ary[hash].next=newNde;
-        }   
-        cout<<"2: "<<ary[hash].hash2<<endl;
 
-    //}
-}
 void HashTable::ELFHash(string n)
 {
     nam=n;
@@ -38,18 +20,71 @@ void HashTable::ELFHash(string n)
          hash ^= (x >> 24);
       }
       hash &= ~x;
-      hash%=size;
+      hash%=hshSz;
    }
 }
 
 HashTable::~HashTable(){
     delete []ary;
+   // delete []dat;
 }
 void HashTable::create(int n){
-    
-    ary=new Node[n];
+    hshSz=n;
+    ary=new Node[hshSz];
     for(int i=0;i<size;i++){
+        betC=bets[i];
         ELFHash(dat[i]);
         insert();
     }
+}
+void HashTable::insert(){
+    Node temp;
+    temp=ary[hash];
+    cout<<"TEST BOI"<<temp.name<<endl;
+        if (ary[hash].hash2==-1){
+            ary[hash].hash2=hash;
+            ary[hash].name=nam;
+            ary[hash].bet=betC;
+            //COME BACK SET BET
+        }
+        else{
+            Node *newNde=new Node;
+            newNde->hash2=hash;
+            newNde->name=nam;
+            newNde->bet=betC;
+            ary[hash].next=newNde;
+            
+           // insert();
+            
+        }   
+/*        cout<<"Hash = "<<ary[hash].hash2<<endl;
+        cout<<"Name = "<<ary[hash].name<<endl;
+        cout<<"Bet = "<<ary[hash].bet<<endl<<endl;
+*/       
+}
+void HashTable::srch(string temp){
+    
+    cout<<"Test:"<<endl;
+    cout<<ary[hash].name<<" ";
+    cout<<ary[hash].bet<<endl;
+    cout<<ary[hash].next->name<<" ";
+    cout<<ary[hash].next->bet<<endl;
+    //cout<<ary[hash].next->next->name<<" ";
+    //cout<<ary[hash].next->next->bet<<endl;
+    
+    nam=temp;
+    Node *newNde=new Node;
+    newNde->next=ary[hash].next;
+    do{
+        newNde->name=ary[hash].name;
+        newNde->next=ary[hash].next;
+        newNde->bet=ary[hash].bet;
+        if (newNde->name==nam){
+            cout<<"Name = "<<newNde->name<<endl;
+            cout<<"Bet = "<<newNde->bet<<endl;
+        }
+        newNde->next=newNde->next->next;
+    }while(newNde->next!=NULL);
+    //if(ary[hash].hash2==-1) cout<<"TEst"<<endl;
+     
 }

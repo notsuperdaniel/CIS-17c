@@ -26,6 +26,8 @@ struct Node{
         string name;
         float bet;
         Node* next=NULL;
+        
+        int count=0;
 };
 
 
